@@ -5,11 +5,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Cormorant+Garamond:wght@400;500;600;700&display=swap');
 
 :root{
-  --bg:#eef5ee;
+  --bg:#f5f7f2;
+  --bg-alt:#eef2eb;
+  --bg-dark:#e8ede3;
   --green:#0d4b3e;
   --green-light:#1a6656;
   --text:#1f2937;
-  --border:#e5e7eb;
+  --border:#dde5d8;
   --green-dark:#0a3d32;
   --gray-50:#f9fafb;
   --gray-100:#f3f4f6;
@@ -23,7 +25,7 @@
 /* Base styles */
 body{
   margin:0;
-  background: linear-gradient(160deg, #e8f5e9 0%, #f1f8e9 40%, #e0f2f1 70%, #f9fbe7 100%);
+  background-color: var(--bg);
   font-family:'Inter',sans-serif;
   color:var(--text);
   line-height:1.7;

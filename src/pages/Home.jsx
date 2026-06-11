@@ -1,10 +1,9 @@
 import Navbar from "../components/Navbar";
 import Hero from "../components/Hero";
-import Features from "../components/Features";
-import ScienceSection from "../components/ScienceSection";
-import About from "../components/About";
-import Vision from "../components/Vision";
-import Mission from "../components/Mission";
+import WhatWeDo from "../components/WhatWeDo";
+import WhyTrust from "../components/WhyTrust";
+import OurPhilosophy from "../components/OurPhilosophy";
+import ScienceCore from "../components/ScienceCore";
 import Contact from "../components/Contact";
 import Footer from "../components/Footer";
 
@@ -15,15 +14,14 @@ function Home() {
 
       <Hero />
 
-      <Features />
+      <WhatWeDo />
 
-      <ScienceSection />
+      <WhyTrust />
 
-      <About />
+      <OurPhilosophy />
 
-      <Vision />
+      <ScienceCore />
 
-      <Mission />
 
       <Contact />
 
