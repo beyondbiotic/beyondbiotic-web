@@ -22,10 +22,10 @@ function AboutPage() {
       <Navbar />
 
       {/* Hero */}
-      <section className="py-24 md:py-36 px-6 md:px-8 bg-[#f5f7f2]">
+      <section className="py-16 md:py-28 px-6 md:px-8 bg-[#e8f0e5]">
         <div className="max-w-4xl mx-auto text-center">
           <h1 className="heading-large">About Us</h1>
-          <p className="mt-6 text-base md:text-lg text-gray-600 leading-relaxed max-w-3xl mx-auto">
+          <p className="mt-4 md:mt-6 text-sm md:text-lg text-gray-600 leading-relaxed max-w-3xl mx-auto">
             Beyond Biotic is a science-driven nutraceutical company dedicated to advancing human health through evidence-based wellness innovation. We combine scientific research, natural bioactives, and a long-term vision for preventive healthcare.
           </p>
         </div>
@@ -33,10 +33,10 @@ function AboutPage() {
 
       {/* Sections */}
       {sections.map(({ title, body }, i) => (
-        <section key={title} className={`py-16 md:py-24 px-6 md:px-8 ${i % 2 === 0 ? 'bg-white' : 'bg-[#eef2eb]'}`}>
+        <section key={title} className={`py-12 md:py-24 px-6 md:px-8 ${i % 2 === 0 ? 'bg-white' : 'bg-[#eef2eb]'}`}>
           <div className="max-w-4xl mx-auto">
             <h2 className="heading-section">{title}</h2>
-            <p className="mt-6 text-base md:text-lg text-gray-600 leading-relaxed">{body}</p>
+            <p className="mt-4 md:mt-6 text-sm md:text-lg text-gray-600 leading-relaxed">{body}</p>
           </div>
         </section>
       ))}
