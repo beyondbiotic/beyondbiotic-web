@@ -1,42 +1,110 @@
-const cards = [
-  { emoji: '🔬', title: 'Science-Driven Approach',     desc: 'Every concept begins with scientific research and evidence.' },
-  { emoji: '🌿', title: 'Nature-Inspired Solutions',   desc: 'Harnessing bioactive compounds and natural ingredients.' },
-  { emoji: '🧪', title: 'Commitment to Quality',       desc: 'Focused on purity, safety, and rigorous standards.' },
-  { emoji: '🧠', title: 'Human-Centered Innovation',   desc: 'Developing solutions for real health challenges and long-term well-being.' },
+import { useEffect, useRef, useState } from 'react';
+
+const steps = [
+  { key: 'past',    label: 'PAST',    points: ['Wisdom', 'Resilience', 'Discipline'] },
+  { key: 'present', label: 'PRESENT', points: ['Innovation', 'Curiosity', 'Scientific Thinking'] },
+  { key: 'future',  label: 'FUTURE',  points: ['Healthier Generations', 'Better Choices', 'Sustainable Well-being'] },
 ];
 
-const tags = ['Research Driven', 'Quality Focused', 'Future Ready', 'Human Centered'];
+export default function WhyTrust() {
+  const ref             = useRef(null);
+  const [phase, setPhase] = useState(0);
 
-function WhyTrust() {
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => setPhase(1), 500);   // PAST lights up
+          setTimeout(() => setPhase(2), 1000);  // line1 grows
+          setTimeout(() => setPhase(3), 2000);  // PRESENT lights up
+          setTimeout(() => setPhase(4), 2500);  // line2 grows
+          setTimeout(() => setPhase(5), 3500);  // FUTURE lights up
+          setTimeout(() => setPhase(6), 4200);  // final statement
+        }
+      },
+      { threshold: 0.3 }
+    );
+    if (ref.current) observer.observe(ref.current);
+    return () => observer.disconnect();
+  }, []);
+
+  const nodeActive = (key) =>
+    (key === 'past' && phase >= 1) ||
+    (key === 'present' && phase >= 3) ||
+    (key === 'future' && phase >= 5);
+
   return (
-    <section className="py-16 md:py-24 px-6 md:px-8 bg-[#eef2eb]">
-      <div className="max-w-7xl mx-auto">
+    <section ref={ref} className="py-20 md:py-32 px-6 md:px-8 bg-[#eef2eb]">
+      <div className="max-w-4xl mx-auto text-center">
 
-        <div className="text-center mb-10 md:mb-14">
-          <h2 className="heading-section">Why Trust Beyond Biotic?</h2>
-        </div>
+        <h2 className="heading-section mb-20">Why Trust Beyond Biotic?</h2>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {cards.map(({ emoji, title, desc }) => (
-            <div key={title} className="group p-6 md:p-8 rounded-3xl border border-slate-200 bg-white hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
-              <div className="text-4xl mb-4">{emoji}</div>
-              <h3 className="font-semibold text-slate-800 text-lg mb-2 group-hover:text-[#0D4B3E] transition-colors">{title}</h3>
-              <p className="text-slate-500 text-sm leading-relaxed">{desc}</p>
+        {/* Timeline Row */}
+        <div className="flex items-start justify-center gap-0">
+
+          {steps.map(({ key, label, points }, i) => (
+            <div key={key} className="flex items-start">
+
+              {/* Node + Points */}
+              <div className="flex flex-col items-center w-36 md:w-48">
+
+                {/* Circle */}
+                <div className={`w-20 h-20 md:w-24 md:h-24 rounded-full border-2 flex items-center justify-center transition-all duration-700 ${
+                  nodeActive(key)
+                    ? 'border-[#0D4B3E] bg-[#0D4B3E] shadow-xl shadow-[#0D4B3E]/30'
+                    : 'border-gray-300 bg-white'
+                }`}>
+                  <span className={`text-sm md:text-base font-bold tracking-wider transition-colors duration-700 ${
+                    nodeActive(key) ? 'text-white' : 'text-gray-300'
+                  }`}>
+                    {label}
+                  </span>
+                </div>
+
+                {/* Points */}
+                <div className={`mt-5 space-y-1.5 transition-all duration-700 ${
+                  nodeActive(key) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+                }`}>
+                  {points.map(p => (
+                    <p key={p} className="text-sm md:text-base text-[#0D4B3E] font-medium">{p}</p>
+                  ))}
+                </div>
+
+              </div>
+
+              {/* Connecting line */}
+              {i < steps.length - 1 && (
+                <div className="relative w-16 md:w-24 h-0.5 bg-gray-200 mt-10 mx-1 overflow-hidden">
+                  <div className={`absolute top-0 left-0 h-full bg-[#0D4B3E] transition-all duration-1000 ease-in-out ${
+                    (i === 0 && phase >= 2) || (i === 1 && phase >= 4) ? 'w-full' : 'w-0'
+                  }`} />
+                </div>
+              )}
+
             </div>
           ))}
+
         </div>
 
-        <div className="mt-12 flex flex-wrap justify-center gap-4">
-          {tags.map(tag => (
-            <span key={tag} className="px-6 py-2 rounded-full border border-[#0D4B3E] text-[#0D4B3E] text-sm font-medium tracking-wide">
-              {tag}
-            </span>
-          ))}
+        {/* Final Statement */}
+        <div className={`mt-20 transition-all duration-1000 ${phase >= 6 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}>
+          <div className="flex flex-col sm:flex-row justify-center gap-6 md:gap-12">
+            {[
+              ['Built by the', 'Present.'],
+              ['Inspired by the', 'Past.'],
+              ['Designed for the', 'Future.'],
+            ].map(([line1, line2]) => (
+              <p key={line2} className="text-base md:text-lg text-gray-500">
+                {line1} <span className="text-[#0D4B3E] font-semibold">{line2}</span>
+              </p>
+            ))}
+          </div>
+          <p className="mt-8 text-2xl md:text-3xl font-bold tracking-[0.3em] text-[#0D4B3E]">
+            BEYOND BIOTIC
+          </p>
         </div>
 
       </div>
     </section>
   );
 }
-
-export default WhyTrust;

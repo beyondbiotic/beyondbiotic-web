@@ -8,9 +8,9 @@ function Hero() {
             <p className="small-label">SCIENCE • NATURE • HUMAN POTENTIAL</p>
 
             <h1 className="heading-large mt-6">
-              Reimagining Human Health
+              Building The Next Generation Of 
               <br />
-              <span className="text-[#0D4B3E]">Through Science and Nature.</span>
+              <span className="text-[#0D4B3E]">Science-Driven Wellness</span>
             </h1>
 
             <p className="text-base md:text-lg mt-6 max-w-xl mx-auto lg:mx-0 text-gray-600 leading-relaxed">
@@ -18,8 +18,8 @@ function Hero() {
             </p>
 
             <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-              <a href="#philosophy"><button className="btn-primary">Explore Our Philosophy →</button></a>
-              <a href="#science"><button className="btn-secondary">Discover the Science</button></a>
+              <a href="#philosophy"><button className="btn-primary">Discover Our Vision →</button></a>
+              <a href="#products"><button className="btn-secondary">Explore Our Products</button></a>
             </div>
           </div>
 

@@ -2,6 +2,7 @@ import Navbar from "../components/Navbar";
 import Hero from "../components/Hero";
 import WhatWeDo from "../components/WhatWeDo";
 import WhyTrust from "../components/WhyTrust";
+import ProductVision from "../components/ProductVision";
 import OurPhilosophy from "../components/OurPhilosophy";
 import ScienceCore from "../components/ScienceCore";
 import Contact from "../components/Contact";
@@ -17,6 +18,8 @@ function Home() {
       <WhatWeDo />
 
       <WhyTrust />
+
+      <ProductVision />
 
       <OurPhilosophy />
 
