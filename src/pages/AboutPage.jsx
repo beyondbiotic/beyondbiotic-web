@@ -65,10 +65,10 @@ function AboutPage() {
       {/* 4. People Beyond Biotic */}
       <section className="py-12 md:py-24 px-6 md:px-8 bg-white">
         <div className="max-w-4xl mx-auto">
-          <h2 className="heading-section">People Beyond Biotic</h2>
+          <h2 className="heading-section">The People Shaping Beyond Biotic</h2>
 
           {/* Two founders */}
-          <div className="mt-10 grid grid-cols-2 gap-8 md:gap-16 max-w-xl mx-auto">
+          <div className="mt-10 grid grid-cols-2 gap-8 sm:gap-16 max-w-xl mx-auto">
             {[
               { src: '/founder.png', name: 'Jaydeep Singh Rathore', role: 'Founder' },
               { src: '/founder 1.png', name: 'Dr. Vibha S Gupta', role: 'Founder' },

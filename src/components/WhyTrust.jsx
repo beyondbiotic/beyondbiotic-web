@@ -40,21 +40,21 @@ export default function WhyTrust() {
         <h2 className="heading-section mb-20">Why Trust Beyond Biotic?</h2>
 
         {/* Timeline Row */}
-        <div className="flex items-start justify-center gap-0">
+        <div className="flex flex-col sm:flex-row items-start justify-center sm:gap-0">
 
           {steps.map(({ key, label, points }, i) => (
             <div key={key} className="flex items-start">
 
               {/* Node + Points */}
-              <div className="flex flex-col items-center w-36 md:w-48">
+              <div className="flex flex-col items-center w-36 sm:w-48">
 
                 {/* Circle */}
-                <div className={`w-20 h-20 md:w-24 md:h-24 rounded-full border-2 flex items-center justify-center transition-all duration-700 ${
+                <div className={`w-20 h-20 sm:w-24 sm:h-24 rounded-full border-2 flex items-center justify-center transition-all duration-700 ${
                   nodeActive(key)
                     ? 'border-[#0D4B3E] bg-[#0D4B3E] shadow-xl shadow-[#0D4B3E]/30'
                     : 'border-gray-300 bg-white'
                 }`}>
-                  <span className={`text-sm md:text-base font-bold tracking-wider transition-colors duration-700 ${
+                  <span className={`text-sm sm:text-base font-bold tracking-wider transition-colors duration-700 ${
                     nodeActive(key) ? 'text-white' : 'text-gray-300'
                   }`}>
                     {label}
@@ -66,7 +66,7 @@ export default function WhyTrust() {
                   nodeActive(key) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
                 }`}>
                   {points.map(p => (
-                    <p key={p} className="text-sm md:text-base text-[#0D4B3E] font-medium">{p}</p>
+                    <p key={p} className="text-sm sm:text-base text-[#0D4B3E] font-medium">{p}</p>
                   ))}
                 </div>
 
@@ -74,7 +74,7 @@ export default function WhyTrust() {
 
               {/* Connecting line */}
               {i < steps.length - 1 && (
-                <div className="relative w-16 md:w-24 h-0.5 bg-gray-200 mt-10 mx-1 overflow-hidden">
+                <div className="relative w-16 sm:w-24 h-0.5 bg-gray-200 mt-10 mx-1 overflow-hidden">
                   <div className={`absolute top-0 left-0 h-full bg-[#0D4B3E] transition-all duration-1000 ease-in-out ${
                     (i === 0 && phase >= 2) || (i === 1 && phase >= 4) ? 'w-full' : 'w-0'
                   }`} />
@@ -88,18 +88,18 @@ export default function WhyTrust() {
 
         {/* Final Statement */}
         <div className={`mt-20 transition-all duration-1000 ${phase >= 6 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}>
-          <div className="flex flex-col sm:flex-row justify-center gap-6 md:gap-12">
+          <div className="flex flex-col sm:flex-row justify-center gap-6 sm:gap-12">
             {[
               ['Built by the', 'Present.'],
               ['Inspired by the', 'Past.'],
               ['Designed for the', 'Future.'],
             ].map(([line1, line2]) => (
-              <p key={line2} className="text-base md:text-lg text-gray-500">
+              <p key={line2} className="text-base sm:text-lg text-gray-500">
                 {line1} <span className="text-[#0D4B3E] font-semibold">{line2}</span>
               </p>
             ))}
           </div>
-          <p className="mt-8 text-2xl md:text-3xl font-bold tracking-[0.3em] text-[#0D4B3E]">
+          <p className="mt-8 text-2xl sm:text-3xl font-bold tracking-[0.3em] text-[#0D4B3E]">
             BEYOND BIOTIC
           </p>
         </div>

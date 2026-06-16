@@ -1,7 +1,7 @@
 function Hero() {
   return (
     <section className="min-h-screen" style={{background:'#e8f0e5'}}>
-      <div className="max-w-7xl mx-auto px-6 lg:px-16">
+      <div className="max-w-7xl mx-auto px-6 md:px-8">
         <div className="grid lg:grid-cols-2 items-center min-h-screen gap-10 py-20 lg:py-0">
 
           <div className="text-center lg:text-left">
@@ -18,8 +18,8 @@ function Hero() {
             </p>
 
             <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-              <a href="#philosophy"><button className="btn-primary">Discover Our Vision →</button></a>
-              <a href="#products"><button className="btn-secondary">Explore Our Products</button></a>
+              <a href="#philosophy"><button className="btn-primary">Discover Our Vision </button></a>
+              <a href="#products"><button className="btn-secondary">Unlock Your Health →</button></a>
             </div>
           </div>
 

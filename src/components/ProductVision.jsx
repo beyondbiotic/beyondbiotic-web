@@ -10,11 +10,9 @@ const products = [
 function ProductVision() {
   const [current, setCurrent]     = useState(0);
   const [animating, setAnimating] = useState(false);
-  const [direction, setDirection] = useState('right');
 
   const navigate = (dir) => {
     if (animating) return;
-    setDirection(dir);
     setAnimating(true);
     setTimeout(() => {
       setCurrent(i =>
@@ -36,10 +34,10 @@ function ProductVision() {
     <section id="products" className="py-16 md:py-24 px-6 md:px-8 bg-white">
       <div className="max-w-4xl mx-auto">
 
-        <h2 className="text-2xl md:text-3xl font-semibold text-[#0D4B3E] text-center mb-10">Our Product Vision</h2>
+        <h2 className="text-2xl md:text-3xl font-semibold text-[#0D4B3E] text-center mb-10">THINGS THAT CARE</h2>
 
         {/* Image + Arrows */}
-        <div className="flex items-center gap-3 md:gap-6">
+        <div className="flex flex-col sm:flex-row items-center gap-3 sm:gap-6">
 
           {/* Prev Button */}
           <button
@@ -81,7 +79,7 @@ function ProductVision() {
             {products.map((_, i) => (
               <button
                 key={i}
-                onClick={() => { setDirection(i > current ? 'right' : 'left'); navigate(i > current ? 'right' : 'left'); }}
+                onClick={() => navigate(i > current ? 'right' : 'left')}
                 className={`h-2 rounded-full transition-all duration-300 ${i === current ? 'bg-[#0D4B3E] w-5' : 'bg-[#dde5d8] w-2'}`}
               />
             ))}

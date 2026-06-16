@@ -17,7 +17,7 @@ function WhatWeDo() {
           </p>
         </div>
 
-        <div className="grid grid-cols-2 gap-x-12 md:gap-x-20 gap-y-8">
+        <div className="flex flex-col gap-8 md:grid md:grid-cols-2 md:gap-x-12 md:gap-y-8">
           {/* Left column */}
           <div className="flex flex-col gap-8">
             {[0, 1].map(i => (
@@ -37,10 +37,10 @@ function WhatWeDo() {
           {/* Right column */}
           <div className="flex flex-col gap-8">
             {[2, 3].map(i => (
-              <div key={areas[i].title} className="flex flex-row-reverse items-start gap-4">
+              <div key={areas[i].title} className="flex items-start gap-4">
                 <div className="w-0.5 h-12 rounded-full bg-[#0D4B3E] mt-1 shrink-0" />
-                <div className="text-right">
-                  <div className="flex flex-row-reverse items-center gap-2">
+                <div>
+                  <div className="flex items-center gap-2">
                     <span className="text-2xl">{areas[i].emoji}</span>
                     <h3 className="font-semibold text-lg text-[#0D4B3E]">{areas[i].title}</h3>
                   </div>

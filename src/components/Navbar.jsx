@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 const links = [
   { label: 'Home',       href: '/',               external: false },
   { label: 'About',      href: '/about',           external: false },
-  { label: 'Philosophy', href: '/#philosophy',     external: false },
+  { label: 'Vision', href: '/#philosophy',     external: false },
   { label: 'Contact',    href: '/#contact',        external: false },
 ];
 
