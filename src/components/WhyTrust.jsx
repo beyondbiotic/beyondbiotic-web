@@ -39,17 +39,58 @@ export default function WhyTrust() {
 
         <h2 className="heading-section mb-20">Why Trust Beyond Biotic?</h2>
 
-        {/* Timeline Row */}
-        <div className="flex flex-col sm:flex-row items-start justify-center sm:gap-0">
+        {/* Mobile: vertical stack with points beside circle */}
+        <div className="flex flex-col items-center sm:hidden">
+          {steps.map(({ key, label, points }, i) => (
+            <div key={key} className="flex items-start">
+              {/* Node + Points side by side */}
+              <div className="flex items-start gap-4 w-64">
+                {/* Circle */}
+                <div className={`w-16 h-16 rounded-full border-2 flex items-center justify-center transition-all duration-700 shrink-0 ${
+                  nodeActive(key)
+                    ? 'border-[#0D4B3E] bg-[#0D4B3E] shadow-xl shadow-[#0D4B3E]/30'
+                    : 'border-gray-300 bg-white'
+                }`}>
+                  <span className={`text-sm font-bold tracking-wider transition-colors duration-700 ${
+                    nodeActive(key) ? 'text-white' : 'text-gray-300'
+                  }`}>
+                    {label}
+                  </span>
+                </div>
+
+                {/* Points beside circle on mobile */}
+                <div className={`space-y-1 text-left transition-all duration-700 ${
+                  nodeActive(key) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+                }`}>
+                  {points.map(p => (
+                    <p key={p} className="text-sm text-[#0D4B3E] font-medium leading-tight">{p}</p>
+                  ))}
+                </div>
+              </div>
+
+              {/* Vertical connecting line */}
+              {i < steps.length - 1 && (
+                <div className="w-0.5 h-12 bg-gray-200 mx-auto my-3 overflow-hidden">
+                  <div className={`w-full h-full bg-[#0D4B3E] transition-all duration-1000 ease-in-out ${
+                    (i === 0 && phase >= 2) || (i === 1 && phase >= 4) ? 'h-full' : 'h-0'
+                  }`} />
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
+
+        {/* Desktop: horizontal timeline */}
+        <div className="hidden sm:flex items-start justify-center gap-0">
 
           {steps.map(({ key, label, points }, i) => (
             <div key={key} className="flex items-start">
 
               {/* Node + Points */}
-              <div className="flex flex-col items-center w-36 sm:w-48">
+              <div className="flex flex-col items-center w-36 md:w-48">
 
                 {/* Circle */}
-                <div className={`w-20 h-20 sm:w-24 sm:h-24 rounded-full border-2 flex items-center justify-center transition-all duration-700 ${
+                <div className={`w-20 h-20 md:w-24 md:h-24 rounded-full border-2 flex items-center justify-center transition-all duration-700 ${
                   nodeActive(key)
                     ? 'border-[#0D4B3E] bg-[#0D4B3E] shadow-xl shadow-[#0D4B3E]/30'
                     : 'border-gray-300 bg-white'
