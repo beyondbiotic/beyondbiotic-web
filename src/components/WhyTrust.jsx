@@ -1,29 +1,30 @@
 import { useEffect, useRef, useState } from 'react';
 
 const steps = [
-  { key: 'past',    label: 'PAST',    points: ['Wisdom', 'Resilience', 'Discipline'] },
+  { key: 'past', label: 'PAST', points: ['Wisdom', 'Resilience', 'Discipline'] },
   { key: 'present', label: 'PRESENT', points: ['Innovation', 'Curiosity', 'Scientific Thinking'] },
-  { key: 'future',  label: 'FUTURE',  points: ['Healthier Generations', 'Better Choices', 'Sustainable Well-being'] },
+  { key: 'future', label: 'FUTURE', points: ['Healthier Generations', 'Better Choices', 'Sustainable Well-being'] },
 ];
 
 export default function WhyTrust() {
-  const ref             = useRef(null);
+  const ref = useRef(null);
   const [phase, setPhase] = useState(0);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          setTimeout(() => setPhase(1), 500);   // PAST lights up
-          setTimeout(() => setPhase(2), 1000);  // line1 grows
-          setTimeout(() => setPhase(3), 2000);  // PRESENT lights up
-          setTimeout(() => setPhase(4), 2500);  // line2 grows
-          setTimeout(() => setPhase(5), 3500);  // FUTURE lights up
-          setTimeout(() => setPhase(6), 4200);  // final statement
+          setTimeout(() => setPhase(1), 500);
+          setTimeout(() => setPhase(2), 1000);
+          setTimeout(() => setPhase(3), 2000);
+          setTimeout(() => setPhase(4), 2500);
+          setTimeout(() => setPhase(5), 3500);
+          setTimeout(() => setPhase(6), 4200);
         }
       },
       { threshold: 0.3 }
     );
+
     if (ref.current) observer.observe(ref.current);
     return () => observer.disconnect();
   }, []);
@@ -37,79 +38,112 @@ export default function WhyTrust() {
     <section ref={ref} className="py-20 md:py-32 px-6 md:px-8 bg-[#eef2eb]">
       <div className="max-w-4xl mx-auto text-center">
 
-        <h2 className="heading-section mb-20">Why Trust Beyond Biotic?</h2>
+        <h2 className="heading-section mb-20">
+          Why Trust Beyond Biotic?
+        </h2>
 
-        {/* Mobile: vertical stack with points beside circle */}
-        <div className="flex flex-col items-center sm:hidden gap-4">
+        {/* MOBILE */}
+        <div className="sm:hidden flex flex-col gap-6 max-w-sm mx-auto">
           {steps.map(({ key, label, points }) => (
-            <div key={key} className="flex items-start">
-              {/* Node + Points side by side */}
-              <div className="flex items-start gap-4">
-                {/* Circle */}
-                <div className={`w-20 h-20 rounded-full border-2 flex items-center justify-center transition-all duration-700 shrink-0 ${
+            <div
+               key={key}
+               className="flex items-center gap-5 justify-start"
+            >
+              {/* Circle */}
+              <div
+                className={`w-20 h-20 rounded-full border-2 flex items-center justify-center transition-all duration-700 shrink-0 ${
                   nodeActive(key)
                     ? 'border-[#0D4B3E] bg-[#0D4B3E] shadow-xl shadow-[#0D4B3E]/30'
                     : 'border-gray-300 bg-white'
-                }`}>
-                  <span className={`text-sm font-bold tracking-wider transition-colors duration-700 ${
-                    nodeActive(key) ? 'text-white' : 'text-gray-300'
-                  }`}>
-                    {label}
-                  </span>
-                </div>
+                }`}
+              >
+                <span
+                  className={`text-sm font-bold tracking-wider transition-colors duration-700 ${
+                    nodeActive(key)
+                      ? 'text-white'
+                      : 'text-gray-300'
+                  }`}
+                >
+                  {label}
+                </span>
+              </div>
 
-                {/* Points beside circle on mobile */}
-                <div className={`space-y-1 text-left transition-all duration-700 ${
-                  nodeActive(key) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
-                }`}>
-                  {points.map(p => (
-                    <p key={p} className="text-sm text-[#0D4B3E] font-medium leading-tight">{p}</p>
-                  ))}
-                </div>
+              {/* Points */}
+              <div
+                className={`text-left transition-all duration-700 ${
+                  nodeActive(key)
+                    ? 'opacity-100 translate-y-0'
+                    : 'opacity-0 translate-y-4'
+                }`}
+              >
+                {points.map((p) => (
+                  <p
+                    key={p}
+                    className="text-sm text-[#0D4B3E] font-medium leading-relaxed"
+                  >
+                    {p}
+                  </p>
+                ))}
               </div>
             </div>
           ))}
         </div>
 
-        {/* Desktop: horizontal timeline */}
+        {/* DESKTOP */}
         <div className="hidden sm:flex items-start justify-center gap-0">
 
           {steps.map(({ key, label, points }, i) => (
             <div key={key} className="flex items-start">
 
-              {/* Node + Points */}
               <div className="flex flex-col items-center w-36 md:w-48">
 
-                {/* Circle */}
-                <div className={`w-20 h-20 md:w-24 md:h-24 rounded-full border-2 flex items-center justify-center transition-all duration-700 ${
-                  nodeActive(key)
-                    ? 'border-[#0D4B3E] bg-[#0D4B3E] shadow-xl shadow-[#0D4B3E]/30'
-                    : 'border-gray-300 bg-white'
-                }`}>
-                  <span className={`text-sm sm:text-base font-bold tracking-wider transition-colors duration-700 ${
-                    nodeActive(key) ? 'text-white' : 'text-gray-300'
-                  }`}>
+                <div
+                  className={`w-20 h-20 md:w-24 md:h-24 rounded-full border-2 flex items-center justify-center transition-all duration-700 ${
+                    nodeActive(key)
+                      ? 'border-[#0D4B3E] bg-[#0D4B3E] shadow-xl shadow-[#0D4B3E]/30'
+                      : 'border-gray-300 bg-white'
+                  }`}
+                >
+                  <span
+                    className={`text-sm sm:text-base font-bold tracking-wider transition-colors duration-700 ${
+                      nodeActive(key)
+                        ? 'text-white'
+                        : 'text-gray-300'
+                    }`}
+                  >
                     {label}
                   </span>
                 </div>
 
-                {/* Points */}
-                <div className={`mt-5 space-y-1.5 transition-all duration-700 ${
-                  nodeActive(key) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
-                }`}>
-                  {points.map(p => (
-                    <p key={p} className="text-sm sm:text-base text-[#0D4B3E] font-medium">{p}</p>
+                <div
+                  className={`mt-5 space-y-1.5 transition-all duration-700 ${
+                    nodeActive(key)
+                      ? 'opacity-100 translate-y-0'
+                      : 'opacity-0 translate-y-4'
+                  }`}
+                >
+                  {points.map((p) => (
+                    <p
+                      key={p}
+                      className="text-sm sm:text-base text-[#0D4B3E] font-medium"
+                    >
+                      {p}
+                    </p>
                   ))}
                 </div>
 
               </div>
 
-              {/* Connecting line */}
               {i < steps.length - 1 && (
                 <div className="relative w-16 sm:w-24 h-0.5 bg-gray-200 mt-10 mx-1 overflow-hidden">
-                  <div className={`absolute top-0 left-0 h-full bg-[#0D4B3E] transition-all duration-1000 ease-in-out ${
-                    (i === 0 && phase >= 2) || (i === 1 && phase >= 4) ? 'w-full' : 'w-0'
-                  }`} />
+                  <div
+                    className={`absolute top-0 left-0 h-full bg-[#0D4B3E] transition-all duration-1000 ease-in-out ${
+                      (i === 0 && phase >= 2) ||
+                      (i === 1 && phase >= 4)
+                        ? 'w-full'
+                        : 'w-0'
+                    }`}
+                  />
                 </div>
               )}
 
@@ -119,18 +153,31 @@ export default function WhyTrust() {
         </div>
 
         {/* Final Statement */}
-        <div className={`mt-20 transition-all duration-1000 ${phase >= 6 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}>
+        <div
+          className={`mt-20 transition-all duration-1000 ${
+            phase >= 6
+              ? 'opacity-100 translate-y-0'
+              : 'opacity-0 translate-y-6'
+          }`}
+        >
           <div className="flex flex-col sm:flex-row justify-center gap-6 sm:gap-12">
             {[
               ['Built by the', 'Present.'],
               ['Inspired by the', 'Past.'],
               ['Designed for the', 'Future.'],
             ].map(([line1, line2]) => (
-              <p key={line2} className="text-base sm:text-lg text-gray-500">
-                {line1} <span className="text-[#0D4B3E] font-semibold">{line2}</span>
+              <p
+                key={line2}
+                className="text-base sm:text-lg text-gray-500"
+              >
+                {line1}{' '}
+                <span className="text-[#0D4B3E] font-semibold">
+                  {line2}
+                </span>
               </p>
             ))}
           </div>
+
           <p className="mt-8 text-2xl sm:text-3xl font-bold tracking-[0.3em] text-[#0D4B3E]">
             BEYOND BIOTIC
           </p>
