@@ -40,13 +40,13 @@ export default function WhyTrust() {
         <h2 className="heading-section mb-20">Why Trust Beyond Biotic?</h2>
 
         {/* Mobile: vertical stack with points beside circle */}
-        <div className="flex flex-col items-center sm:hidden">
-          {steps.map(({ key, label, points }, i) => (
+        <div className="flex flex-col items-center sm:hidden gap-4">
+          {steps.map(({ key, label, points }) => (
             <div key={key} className="flex items-start">
               {/* Node + Points side by side */}
-              <div className="flex items-start gap-4 w-64">
+              <div className="flex items-start gap-4">
                 {/* Circle */}
-                <div className={`w-16 h-16 rounded-full border-2 flex items-center justify-center transition-all duration-700 shrink-0 ${
+                <div className={`w-20 h-20 rounded-full border-2 flex items-center justify-center transition-all duration-700 shrink-0 ${
                   nodeActive(key)
                     ? 'border-[#0D4B3E] bg-[#0D4B3E] shadow-xl shadow-[#0D4B3E]/30'
                     : 'border-gray-300 bg-white'
@@ -67,15 +67,6 @@ export default function WhyTrust() {
                   ))}
                 </div>
               </div>
-
-              {/* Vertical connecting line */}
-              {i < steps.length - 1 && (
-                <div className="w-0.5 h-12 bg-gray-200 mx-auto my-3 overflow-hidden">
-                  <div className={`w-full h-full bg-[#0D4B3E] transition-all duration-1000 ease-in-out ${
-                    (i === 0 && phase >= 2) || (i === 1 && phase >= 4) ? 'h-full' : 'h-0'
-                  }`} />
-                </div>
-              )}
             </div>
           ))}
         </div>
